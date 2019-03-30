@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <title>Overwatch character picker</title>
+    <style>
+        body {
+            text-align: center;
+            vertical-align: middle;
+            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        }
+
+        p,
+        div {
+            font-size: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Overwatch character picker</h1>
+    <p id="res">yeet</p>
+    <button onclick="run(false)">refresh</button>
+    <button onclick="run(true)">refresh and delete</button>
+    <button onclick="reset()">reset delete</button>
+</body>
+<script>
+    var res = document.getElementById("res")
+    var heroes = [
+        "Ana",
+        "Ashe",
+        "Baptiste",
+        "Bastion",
+        "Brigitte",
+        "D.Va",
+        "Doomfist",
+        "Genji",
+        "Hanzo",
+        "Junkrat",
+        "Lúcio",
+        "McCree",
+        "Mei",
+        "Mercy",
+        "Moira",
+        "Orisa",
+        "Pharah",
+        "Reaper",
+        "Reinhardt",
+        "Roadhog",
+        "Soldier: 76",
+        "Sombra",
+        "Symmetra",
+        "Tornbjörn",
+        "Tracer",
+        "Widowmaker",
+        "Winston",
+        "Wreaking Ball",
+        "Zarya",
+        "Zenyatta"
+    ]
+    var heroesCopy = [];
+    heroes.forEach(hero => {
+        heroesCopy.push(hero)
+    })
+    run()
+
+    function run(doesDelete) {
+        if (!heroes.length) {
+            res.innerHTML = "You're done!"
+        } else {
+            var i = Math.floor(Math.random() * heroes.length)
+            res.innerHTML = heroes[i]
+            if (doesDelete) {
+                heroes.splice(i, 1)
+            }
+        }
+    }
+
+    function reset() {
+        heroes = []
+        heroesCopy.forEach(hero => {
+            heroes.push(hero)
+        })
+    }
+</script>
+
+</html>
